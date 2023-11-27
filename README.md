@@ -30,8 +30,8 @@ Riot Games API를 통해 소환사의 개인적인 게임 정보와 함께 경�
 5가지 포지션에 대한 내용은 다음과 같다.
 
 * LOL 게임에 대한 간략한 설명
+* 영상 삽입
   
-[![Video Label](http://img.youtube.com/vi/z0yshffSEK0/0.jpg)](https://www.youtube.com/watch?v=z0yshffSEK0)
 
 | 포지션    |역할|
 |--------|---|
