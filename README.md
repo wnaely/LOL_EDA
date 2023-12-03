@@ -31,6 +31,12 @@ Riot Games API를 통해 소환사의 개인적인 게임 정보와 함께 경�
 
 * LOL 게임에 대한 간략한 설명
 * 영상 삽입
+
+     <p align="center" width="100%">
+     <img width="60%" src="https://github.com/wnaely/LOL_EDA/assets/130523834/31b7d9a9-6a93-48e9-a7c6-d43f8c576936">
+     <br>
+     </p>
+
   
 
 | 포지션    |역할|
