@@ -1,5 +1,5 @@
 <p align="center" width="100%">
-     <img width="80%" src="https://github.com/wnaely/LOL_EDA/assets/130523834/8014edf3-a593-40f2-bacd-4186f8459a11">
+     <img width="77%" src="https://github.com/wnaely/LOL_EDA/assets/130523834/0ef25082-b0c9-4ebd-a948-bc545ca737cb">
      </p>
 
 
