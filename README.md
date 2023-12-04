@@ -1,7 +1,6 @@
 <p align="center" width="100%">
-     <img width="77%" src="https://github.com/wnaely/LOL_EDA/assets/130523834/0ef25082-b0c9-4ebd-a948-bc545ca737cb">
+     <img width="77%" src="https://github.com/wnaely/LOL_EDA/assets/130523834/5e8f8b95-9542-47cf-8e9e-b02db16bdd65">
      </p>
-
 
 
 # 1. 개 요
@@ -108,5 +107,16 @@ CNN을 썼다. 단순한 합산을 썼다.
 <hr>
 
 # 4. 결론 및 배운점
+
+
+<hr>
+       
+       
+   ## References
+   [01] https://www.dailypop.kr/news/articleView.html?idxno=65004 <br>
+
+   
+
+
 
 
