@@ -1,6 +1,7 @@
 <p align="center" width="100%">
-     <img width="77%" src="https://github.com/wnaely/LOL_EDA/assets/130523834/5e8f8b95-9542-47cf-8e9e-b02db16bdd65">
+     <img width="100%" src="https://github.com/wnaely/LOL_EDA/assets/130523834/eb619d22-7723-41df-ac65-69c98bda1a64">
      </p>
+
 
 
 ## 1. 개 요
