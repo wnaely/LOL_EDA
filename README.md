@@ -1,5 +1,5 @@
 <p align="center" width="100%">
-     <img width="100%" src="https://github.com/wnaely/LOL_EDA/assets/130523834/eb619d22-7723-41df-ac65-69c98bda1a64">
+     <img width="99%" src="https://github.com/wnaely/LOL_EDA/assets/130523834/eb619d22-7723-41df-ac65-69c98bda1a64">
      </p>
      
 
@@ -8,6 +8,14 @@
 
 
 ## 1. 개 요
+
+
+<h5><p align="center" width="100%">
+     <img width="45%" src="https://github.com/wnaely/LOL_EDA/assets/130523834/9783dd92-ef52-4a33-b449-8002894144b6">
+     <img width="54%" src="https://github.com/wnaely/LOL_EDA/assets/130523834/dc9b0604-e098-4fa7-9936-978a5e09f20f"> <br>
+     (좌: 23년 11월 PC방 주간 점유율 순위) /   
+     (우: 중국 제외 37개국 PC게임 MAU 통계)</h5></p>
+
 
    * ### 문제정의
      "League of Legends(이하 LoL)"는 Riot Games에서 개발한 인기 있는 온라인 게임으로, 전 세계적으로 많은 플레이어들이 즐기고 있다.
@@ -110,7 +118,8 @@
        
        
    ## References
-   [01] https://www.dailypop.kr/news/articleView.html?idxno=65004 <br>
+   [01] https://www.thelog.co.kr/report/reportView.do?nSeq=265 <br>
+   [02] https://pgr21.com/free2/72613 <br>
 
    
 
