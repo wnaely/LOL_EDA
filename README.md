@@ -13,8 +13,8 @@
 <h5><p align="center" width="100%">
      <img width="45%" src="https://github.com/wnaely/LOL_EDA/assets/130523834/9783dd92-ef52-4a33-b449-8002894144b6">
      <img width="54%" src="https://github.com/wnaely/LOL_EDA/assets/130523834/dc9b0604-e098-4fa7-9936-978a5e09f20f"> <br>
-     (좌: 23년 11월 PC방 주간 점유율 순위) /   
-     (우: 중국 제외 37개국 PC게임 MAU 통계)</h5></p>
+     ( 좌: <a href="https://www.thelog.co.kr/report/reportView.do?nSeq=265">23년 11월 PC방 주간 점유율 순위</a> ) /   
+     ( 우: <a href="https://pgr21.com/free2/72613">중국 제외 37개국 PC게임 MAU 통계</a> )</p></h5>
 
 
    * ### 문제정의
