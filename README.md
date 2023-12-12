@@ -2,9 +2,9 @@
      <img width="100%" src="https://github.com/wnaely/LOL_EDA/assets/130523834/eb619d22-7723-41df-ac65-69c98bda1a64">
      </p>
      
-<h1 align="center"> ⚔ LoL Win-Loss Prediction 🏆 </h1>
-<p align="center"> <b>리그 오브 레전드(LoL)</b> 게임 데이터를 활용한 승패 예측 모델 개발 </p>
-<br><hr>
+
+# ⚔ LoL Win-Loss Prediction 🏆
+<b>리그 오브 레전드(LoL)</b> 게임 데이터를 활용한 승패 예측 모델 개발
 
 
 ## 1. 개 요
