@@ -10,7 +10,7 @@
 # 1. 개 요
      
 "League of Legends(이하 LoL)"는 Riot Games에서 개발한 인기 있는 온라인 게임으로, 전 세계적으로 많은 플레이어들이 즐기고 있다.
-이 게임은 전략과 팀워크가 중요한 멀티플레이어 배틀 아레나(MOBA) 장르의 게임이며, e-sports 산업에서 주목받고 있다. 
+이 게임은 전략과 팀워크가 중요한 멀티플레이어 배틀 아레나(MOBA) 장르의 게임이며, e-sports 산업에서 주목받고 있다<sup>[[01]](https://weekly.chosun.com/news/articleView.html?idxno=30406)</sup>. 
 
 <h5><p align="center" width="100%">
      <img width="45%" src="https://github.com/wnaely/LOL_EDA/assets/130523834/9783dd92-ef52-4a33-b449-8002894144b6">
@@ -18,7 +18,7 @@
      ( 좌: <a href="https://www.thelog.co.kr/report/reportView.do?nSeq=265">23년 11월 PC방 주간 점유율 순위</a> ) /   
      ( 우: <a href="https://pgr21.com/free2/72613">중국 제외 37개국 PC게임 MAU 통계</a> )</p></h5>
 
-PC방 게임 통계서비스에 의하면 2018년 8월부터 2023년 12월 기준 지금까지 PC방 주간 점유율 순위에서 꾸준히 1위를 차지하고 있으며, 중국을 제외한 37개국의 PC게임 MAU 통계에서도 1위를 차지하는 등 LoL의 영향력은 매우 큰 것을 알 수 있다. 
+PC방 게임 통계서비스에 의하면 LoL은 2018년 8월부터 5년 넘게 PC방 주간 점유율 순위에서 꾸준히 1위를 차지하고 있으며<sup>[[02]](https://www.thelog.co.kr/report/reportView.do?nSeq=265)</sup>, 중국을 제외한 37개국의 PC게임 MAU 통계에서도 1위를 차지하는 등<sup>[[03]](https://www.thelog.co.kr/report/reportView.do?nSeq=265)</sup> LoL의 영향력은 매우 큰 것을 알 수 있다. 
 또한, 2022년 항저우 아시안 게임에서 정식 종목으로 채택되면서 그만큼 높은 성과를 보이고 있다.
 
 Riot Games는 게임 자체의 재미뿐만 아니라 분석 가능한 다양한 게임 데이터를 무료로 제공하고 있다. 소환사 정보, 챔피언 정보, 게임 정보, 랭킹 및 리그 정보 등의 게임 데이터는 Riot Games의 API를 통해 접근할 수 있다. 데이터는 하루에 약 20만 건의 게임 데이터가 수집되며, 소정의 절차를 거쳐 쉽게 접근 할 수 있다. 해당 데이터를 통해 게임에 대한 통계적 분석과 예측 모델을 구축할 수 있다.
@@ -204,35 +204,98 @@ LoL의 티어 시스템은 플레이어의 스킬 수준을 평가하고 등급�
   <tr align="center"><td>tier</td><td>···</td><td>P</td><td>···</td><td>G</td><td>···</td></tr>
 </table>
 
+---
+
 # 3. 승패예측 모델
 
 ## 3.1 모델 개요
 이 프로젝트에서는 단순 합산 방법과 함성곱 신경망(CNN) 두 가지 방법을 사용하였다.
 
-<b>단순 합산 방법<b>은 각 경기 데이터에서 플레이어의 주요 지표를 합산하여 승패를 예측하는 방식이다.
+<b>'단순 합산 방법'</b>은 각 경기 데이터에서 플레이어의 주요 지표를 합산하여 승패를 예측하는 방식이다.
 이 방식은 각 플레이어의 성과를 단순히 더함으로써, 팀의 전반적인 성과를 쉽게 파악하고 이를 바탕으로 승패를 예측할 수 있다.
 이 방법의 장점은 간결함과 직관적인 해석 가능성에 있다. 하지만 각 지표의 상호작용이나 각 플레이어의 개별적인 영향력 등 더 복잡한 요소를 고려하지 않는다는 한계가 있다.
 
-<b>CNN</b>은 주어진 데이터에서 복잡한 패턴을 학습하고 이를 바탕으로 승패를 예측하는 방식이다. CNN은 합성곱 계층과 풀링 계층을 통해 원본 데이터에서 중요한 특징들을 추출하고 학습하는 방식으로 동작한다. 이 방법은 복잡한 패턴을 발견하고 이를 통해 더 정확한 예측을 가능하게 하는 것이 장점이다.
+<b>'CNN'</b>은 주어진 데이터에서 복잡한 패턴을 학습하고 이를 바탕으로 승패를 예측하는 방식이다. CNN은 합성곱 계층과 풀링 계층을 통해 원본 데이터에서 중요한 특징들을 추출하고 학습하는 방식으로 동작한다. 이 방법은 복잡한 패턴을 발견하고 이를 통해 더 정확한 예측을 가능하게 하는 것이 장점이다.
 
 ## 3.2 LoL 게임 데이터 분석 과정
 
+### [ 단순 합산 ]
+
+``` python
+...
+
+position = ['TOP', 'MID', 'JUG', 'SPT', 'ADC']
+features = ['kda', 'dpd', 'dpg', 'dpm', 'dtpm']
+...
+for id in ids:
+    blue_data = df.loc[idx[id, 100, features]].values
+    blue_data = list(np.concatenate(blue_data))
+    red_data  = df.loc[idx[id, 200, features]].values
+    red_data  = list(np.concatenate(red_data))
+    blue_win = df.loc[idx[id, 100, 'win']].values
+    win  = blue_win[0]
+    blue_sum = sum(blue_data)
+    red_sum = sum(red_data)
+    forecast = 0
+    if blue_sum > red_sum : forecast = 1
+    acc = 0
+    if win == forecast: acc =1
+
+...
+```
+플레이어의 포지션(TOP, MID, JUG, SPT, ADC)과 특징 데이터(kda, dpd, dpg, dpm, dtpm)를 기준으로 블루팀과 레드팀의 데이터를 추출하고, 이를 합산하여 블루팀과 레드팀의 총 점수를 계산한다. 
+이후 블루팀의 점수가 레드팀의 점수보다 높은 경우 예측 승리팀을 블루팀으로, 그렇지 않은 경우 레드팀으로 예측한다.
+
+이렇게 예측된 승리팀과 실제 승리팀을 비교하여 예측의 정확도를 계산한다. 이 과정을 각 게임에 대해 반복하며, 각 게임의 예측 정보(ID, 블루팀 데이터, 레드팀 데이터, 승리팀, 예측 승리팀, 예측 정확도)를 저장한다.
+
+마지막으로, 모든 게임에 대한 예측 정확도의 합을 계산하고, 이를 게임 수로 나누어 전체 예측 정확도를 계산한다.
+이 결과를 출력하여 모델의 전체 예측 성능을 확인한다.
+
+### [ CNN ]
+
+``` python
+...
+
+model = Sequential()
+model.add(Conv2D(75, (3,3), strides=1, padding="same", activation="relu", input_shape=(10,5,1)))
+model.add(BatchNormalization())
+model.add(MaxPool2D((2,2), strides=2, padding="same"))
+model.add(Conv2D(50, (3,3), strides=1, padding="same", activation="relu"))
+...
+model.add(MaxPool2D((2,2), strides=2, padding="same"))
+model.add(Flatten())
+model.add(Dense(units=265, activation="relu"))
+model.add(Dropout(0.3))
+model.add(Dense(units=num_classes, activation="softmax"))
+
+...
+```
+데이터를 불러온 후 데이터의 레이블(승패 정보)을 분리하고, 데이터를 CNN 모델에 적합한 형태로 변환한다.
+CNN 모델은 여러 개의 Conv2D(합성곱 계층), MaxPool2D(풀링 계층), Dropout(드롭아웃 계층), BatchNormalization(배치 정규화 계층)으로 구성되어 있으며, 이러한 계층들은 순차적(Sequential)으로 배열되어 있다. 
+
+Conv2D는 데이터에서 패턴을 학습하며, MaxPool2D는 데이터의 크기를 줄이는 데 사용된다. Dropout은 과적합을 방지하는 역할을 하며, BatchNormalization은 학습을 안정화하고 가속화하는 데 도움을 준다.
+
+마지막으로, Fltten을 통해 2차원의 특징 맵을 1차원으로 변환하고, 이를 바탕으로 Dense를 통해 분류 작업을 수행한다.
+모델 구성 후, 'categorical_crossentropy'를 손실 함수로, 'adam'을 최적화 방법으로, 'accuracy'를 성능 지표로 사용하여 모델을 컴파일하고, fit 함수를 사용하여 모델을 학습시킨다. 이때, 텐서보드를 콜백으로 설정하여 학습 과정을 모니터링한다.
+
+---
 
 ## 3.2 성능
-|   |    |  정확도 | 
-|---| ---| --------|
-|0825|플래티넘↑|95%| 
-|    | 전체 |93.6% |
-|0915|Platinum↑| 93.4% |
-|    | 전체  |90.3%|
-|0917|플래티넘↑|88.4% |
-|    |    전체  |86.2% |
-
+<table>
+  <tr align="center"><th>데이터</th><th>구분</th><th>정확도(단순)</th><th>정확도(CNN)</th></tr>
+  <tr align="center"><th rowspan="2">0825</th><td>플래티넘 ↑</td><td>95%</td><td>95.8%</td></tr>
+  <tr align="center"><td>전체</td><td>93.6%</td><td>94.2%</td></tr>
+  <tr align="center"><th rowspan="2">0915</th><td>플래티넘 ↑</td><td>93.4%</td><td>94.8%</td></tr>
+  <tr align="center"><td>전체</td><td>90.3%</td><td>93.7%</td></tr>
+  <tr align="center"><th rowspan="2">0917</th><td>플래티넘 ↑</td><td>88.4%</td><td>93.4%</td></tr>
+  <tr align="center"><td>전체</td><td>86.2%</td><td>92.9%</td></tr>
+</table>
 플래티넘 이상 4.5만건
 데이터 전체 20만건
 
 <!--   ### 3.3 소결
 * <b>성능에 대한 의미</b><br>
+왜 잘 나오는지
 이 두 가지 방법을 사용하여 모델의 성능을 비교하였다. 이를 통해 각 방법의 장단점을 파앙ㄱ하고
 
 * <b>핵심 데이터 항목에 대한 추정 및 분석<b><br>
@@ -258,8 +321,10 @@ Riot Games API를 사용하여 게임 데이터를 수집하는 과정을 배웠
        
        
    ## References
-   [01] https://www.thelog.co.kr/report/reportView.do?nSeq=265 <br>
-   [02] https://pgr21.com/free2/72613 <br>
+   [01] https://weekly.chosun.com/news/articleView.html?idxno=30406 <br>
+   [02] https://www.thelog.co.kr/report/reportView.do?nSeq=265 <br>
+   [03] https://pgr21.com/free2/72613 <br>
+   [04] https://developer.riotgames.com/
 
    
 
