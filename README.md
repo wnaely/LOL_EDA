@@ -115,16 +115,69 @@ LoL은 5명의 팀원으로 이루어진 두 팀이 서로 대립하여 상대�
 20만 건의 경기 데이터는 수준 별로 편차가 어느정도 존재할 것으로 예상된다. 
 따라서 일정 수준 이상의 데이터로 지표의 상관성을 통해 승패예측 모델을 만드는 것이 합리적일 것이다.
 
-이에 이번 프로젝트에서는 다음과 같이 정의되는 LoL게임의 등급체계(tier)를 바탕으로, 모든 플레이어가 플래티넘 이상인 경기를 추출하여 분석해보고자 한다.
+이에 이번 프로젝트에서는 다음과 같이 정의되는 LoL게임의 등급체계(tier)를 바탕으로, 모든 플레이어가 <b>'플래티넘 이상'</b>인 경기를 추출하여 분석해보고자 한다.
 
-* 티어에 대한 정보
-<p align="center" width="100%">
-     <img width="70%" src="https://github.com/wnaely/LOL_EDA/assets/130523834/434c2849-d3a7-42d3-af24-84d511372a50">
-     </p>
+#### [ 티어에 대한 정보 ] 
+LoL의 티어 시스템은 플레이어의 스킬 수준을 평가하고 등급화하는 척도이다. 총 10개의 레벨로 이루어져 있으며, 상위 티어 3개를 제외한 각 티어는 I, II, III, IV의 4개 division으로 세분화된다.
+
+플레이어는 매치 승리로 LP(League Points)를 획득하며, 일정 LP를 얻으면 다음 division 또는 티어로 승급하게 된다. 반대로 패배 시 LP가 감소하고, 연속 패배는 division 또는 티어가 하락하게 된다.
+
+티어 시스템은 플레이어의 실력을 지속적으로 측정하고 업데이트하며, 매치메이킹 시스템에서 비슷한 실력의 플레이어들을 매칭하는 기준으로도 사용된다.
+
+다음은 티어 분포에 대한 시각화 자료이다.
+
+---
 
 <details>
-<summary>티어별 히스토그램</summary>
+<summary>한국 티어 분포표 <a href="https://www.op.gg/statistics/tiers"><sup>[출처 : op.gg]</sup></a></summary><br>
+<div align="center" width="100%"><img src="https://github.com/wnaely/LOL_EDA/assets/130523834/8c879695-e559-454b-9bbb-984ba72f3351"> </div>
+
+<table>
+  <tr align="center"><th>티어</th><th>단계</th><th>분포</th><th>합</th></tr>
+  <tr align="center"><th>챌린저 C</th><td>Ⅰ</td><td>0.01%</td><td>0.01%</td></tr>
+  <tr align="center"><th>그랜드마스터 R</th><td>Ⅰ</td><td>0.02%</td><td>0.02%</td></tr>
+  <tr align="center"><th>마스터 M</th><td>Ⅰ</td><td>0.47%</td><td>0.47%</td></tr>
+  <tr align="center"><th rowspan="4">다이아 D</th><td>Ⅰ</td><td>0.39%</td><td rowspan="4">3.45%</td></tr>
+  <tr align="center"><td>Ⅱ</td><td>0.55%</td></tr><tr align="center"><td>Ⅲ</td><td>0.69%</td></tr>
+  <tr align="center"><td>Ⅳ</td><td>1.82%</td></tr>
+  <tr align="center"><th rowspan="4">에메랄드 E</th><td>Ⅰ</td><td>1.59%</td><td rowspan="4">13.68%</td></tr>
+  <tr align="center"><td>Ⅱ</td><td>1.93%</td></tr><tr align="center"><td>Ⅲ</td><td>3.21%</td></tr>
+  <tr align="center"><td>Ⅳ</td><td>6.95%</td></tr>
+  <tr align="center"><th rowspan="4">플래티넘 P</th><td>Ⅰ</td><td>2.15%</td><td rowspan="4">16.97%</td></tr>
+  <tr align="center"><td>Ⅱ</td><td>3.22%</td></tr><tr align="center"><td>Ⅲ</td><td>4.21%</td></tr>
+  <tr align="center"><td>Ⅳ</td><td>7.39%</td></tr>
+  <tr align="center"><th rowspan="4">골드 G</th><td>Ⅰ</td><td>2.68%</td><td rowspan="4">19.26%</td></tr>
+  <tr align="center"><td>Ⅱ</td><td>3.92%</td></tr><tr align="center"><td>Ⅲ</td><td>4.85%</td></tr>
+  <tr align="center"><td>Ⅳ</td><td>7.81%</td></tr>
+  <tr align="center"><th rowspan="4">실버 S</th><td>Ⅰ</td><td>2.78%</td><td rowspan="4">19.04%</td></tr>
+  <tr align="center"><td>Ⅱ</td><td>4.01%</td></tr><tr align="center"><td>Ⅲ</td><td>4.87%</td></tr>
+  <tr align="center"><td>Ⅳ</td><td>7.38%</td></tr>
+  <tr align="center"><th rowspan="4">브론즈 B</th><td>Ⅰ</td><td>3.3%</td><td rowspan="4">19.93%</td></tr>
+  <tr align="center"><td>Ⅱ</td><td>4.5%</td></tr><tr align="center"><td>Ⅲ</td><td>5.08%</td></tr>
+  <tr align="center"><td>Ⅳ</td><td>7.05%</td></tr>
+  <tr align="center"><th rowspan="4">아이언 I</th><td>Ⅰ</td><td>3.11%</td><td rowspan="4">7.21%</td></tr>
+  <tr align="center"><td>Ⅱ</td><td>2.54%</td></tr><tr align="center"><td>Ⅲ</td><td>1.08%</td></tr>
+  <tr align="center"><td>Ⅳ</td><td>0.48%</td></tr>
+</table>
 </details>
+
+
+<details>
+<summary>0825 전체 게임 데이터 티어별 분포표</summary><br>
+<div align="center" width="100%"><img width="70%" src="https://github.com/wnaely/LOL_EDA/assets/130523834/7a78f08d-3855-443b-a1b8-c62cf2c382e7"> </div>
+</details>
+
+<details>
+<summary>0915 전체 게임 데이터 티어별 분포표</summary><br>
+<div align="center" width="100%"><img width="70%" src="https://github.com/wnaely/LOL_EDA/assets/130523834/73e4a96a-88eb-48e7-b636-43b5c32cef42"> </div>
+</details>
+
+<details>
+<summary>0917 전체 게임 데이터 티어별 분포표</summary><br>
+<div align="center" width="100%"><img width="70%" src="https://github.com/wnaely/LOL_EDA/assets/130523834/b021a633-53d7-4798-a427-41d0b96e32c1"> </div>
+</details>
+
+전체 게임 데이터의 티어별 분포를 살펴보면 '브론즈' ~ '에메랄드' 티어에 많이 분포 되어 있는 것을 알 수 있고, 그 중에서도 '골드' 티어가 가장 많다.
   
 플래티넘 이상인 경기의 수
   
